@@ -16,7 +16,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    private UserDto createUser(UserDto userDto)
+    public UserDto createUser(UserDto userDto)
     {
         User user=mapToEntity(userDto);
         User savedUser=userRepository.save(user);
@@ -41,7 +41,7 @@ public class UserService {
     //update user
     //delete user
 
-    private User mapToEntity(UserDto userDto) {
+    public User mapToEntity(UserDto userDto) {
         User user=new User();
         user.setEmail(userDto.getEmail());
         user.setName(userDto.getName());
@@ -49,7 +49,7 @@ public class UserService {
         return  user;
     }
 
-    private UserDto mapToDto(User user)
+ public UserDto mapToDto(User user)
     {
         UserDto userDto=new UserDto();
         userDto.setId(user.getId());

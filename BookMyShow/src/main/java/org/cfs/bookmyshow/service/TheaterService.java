@@ -4,6 +4,7 @@ import org.cfs.bookmyshow.dto.TheaterDto;
 import org.cfs.bookmyshow.exception.ResourceNotFoundException;
 import org.cfs.bookmyshow.model.Theater;
 import org.cfs.bookmyshow.repository.TheaterRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 @Service
 public class TheaterService {
 
+    @Autowired
     private TheaterRepository theaterRepository;
 
 
@@ -29,7 +31,7 @@ public class TheaterService {
         return mapToDto(theater);
     }
 
-    private List<TheaterDto> getAllTheaters()
+    public List<TheaterDto> getAllTheaters()
     {
         List<Theater> theaters=theaterRepository.findAll();
         return theaters.stream()
@@ -37,7 +39,7 @@ public class TheaterService {
                 .collect(Collectors.toList());
     }
 
-    private List<TheaterDto> getAllTheaterByCity(String city)
+   public List<TheaterDto> getAllTheaterByCity(String city)
     {
         List<Theater> theaters=theaterRepository.findByCity(city);
         return theaters.stream()
